@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/second_graph"
+    app:startDestination="@id/rvOrdersFragment">
+
+    <fragment
+        android:id="@+id/rvOrdersFragment"
+        android:name="com.nicomahnic.dadm.enerfi.ui.fragments.secondactivity.rvorders.RvOrdersFragment"
+        android:label="@string/tab_books"
+        tools:layout="@layout/rv_orders_fragment" >
+        <action
+            android:id="@+id/action_rvOrdersFragment_to_tabContainerFragment"
+            app:destination="@id/tabContainerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tabContainerFragment"
+        android:name="com.nicomahnic.dadm.enerfi.ui.fragments.secondactivity.tabcontainer.TabContainerFragment"
+        android:label="@string/tab_container"
+        tools:layout="@layout/tab_container_fragment">
+        <argument
+            android:name="orderNum"
+            app:argType="long" />
+        <argument
+            android:name="clientName"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerOrder"
+        android:name="com.nicomahnic.dadm.enerfi.ui.fragments.secondactivity.drawer.RegisterOrderFragment"
+        android:label="@string/registerOrder"
+        tools:layout="@layout/register_order_fragment" />
+</navigation>

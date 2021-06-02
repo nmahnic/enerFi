@@ -1,0 +1,41 @@
+<resources>
+    <string name="app_name">EnerFi</string>
+    <!-- TODO: Remove or change this placeholder text -->
+
+    <string name="action_settings">Preferencias</string>
+    <string name="orders_rcv">Ordenes</string>
+    <string name="tab_container">Detalle</string>
+    <string name="tab_order">Orden</string>
+    <string name="tab_books">Libros</string>
+
+
+    <!-- Nav Drawer Screen-->
+    <string name="logout">Cerrar sesión</string>
+    <string name="register">Cargar Orden</string>
+    <string name="editStock">Modificar Stock</string>
+
+    <!-- New Order Screen-->
+    <string name="registerOrder">Agregar Orden</string>
+
+    <!-- Details Screen-->
+    <string name="btnModify">MODIFICAR</string>
+    <string name="btnDelete">ELIMINAR</string>
+    <string name="qtyBooks">Cant. de Libros:</string>
+    <string name="dataLabel">Fecha:</string>
+    <string name="orderNumber">N° Orden:</string>
+
+    <!-- Login Screen -->
+    <string name="user">Usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="name">Nombre</string>
+
+    <!-- Preference Titles -->
+    <string name="language_header">Idiomas</string>
+
+    <!-- Language Preferences -->
+    <string name="language_title">Elija Idioma</string>
+    <string name="load">Cargar</string>
+    <string name="client">Cliente</string>
+
+
+</resources>
