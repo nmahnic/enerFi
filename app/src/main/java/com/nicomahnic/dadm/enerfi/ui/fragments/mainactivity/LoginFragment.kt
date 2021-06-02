@@ -152,9 +152,9 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             userDao?.insertPerson(
                 UserEntity(
                     id = 0,
-                    name = "Luli",
+                    name = "Tiago",
                     password = "1234",
-                    img = "https://media-exp1.licdn.com/dms/image/C4D35AQHLjJeP2QR5FQ/profile-framedphoto-shrink_200_200/0/1613432312275?e=1621058400&v=beta&t=o0dW6MV15_aRm1X7Uh42a_UzmWrjkpkUAzUs0RszqLo"
+                    img = "https://scontent.faep25-1.fna.fbcdn.net/v/t31.18172-8/21013880_10212018262726146_6287464117982848076_o.jpg?_nc_cat=106&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=j1Rr-fLmSxUAX9RQ2Ut&_nc_ht=scontent.faep25-1.fna&oh=06256b0f0165aa954c47922516a1d00a&oe=60DC7372"
                 )
             )
         }

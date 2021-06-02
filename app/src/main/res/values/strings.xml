@@ -11,8 +11,7 @@
 
     <!-- Nav Drawer Screen-->
     <string name="logout">Cerrar sesión</string>
-    <string name="register">Cargar Orden</string>
-    <string name="editStock">Modificar Stock</string>
+    <string name="register">Registrar Dispositivo</string>
 
     <!-- New Order Screen-->
     <string name="registerOrder">Agregar Orden</string>
@@ -36,6 +35,7 @@
     <string name="language_title">Elija Idioma</string>
     <string name="load">Cargar</string>
     <string name="client">Cliente</string>
+    <string name="login">INGRESAR</string>
 
 
 </resources>

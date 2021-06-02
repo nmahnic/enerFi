@@ -15,17 +15,14 @@ import com.nicomahnic.dadm.enerfi.data.database.AppDatabase
 import com.nicomahnic.dadm.enerfi.data.entities.Book
 import com.nicomahnic.dadm.enerfi.databinding.RegisterOrderFragmentBinding
 import com.nicomahnic.dadm.enerfi.repository.RepositoryImpl
-import com.nicomahnic.dadm.enerfi.ui.adapter.OrderBooksAdapter
 import com.nicomahnic.dadm.enerfi.viewmodel.RegisterOrderViewModel
 import com.nicomahnic.dadm.enerfi.viewmodel.ViewModelFactory
 
-class RegisterOrderFragment :
-    Fragment(R.layout.register_order_fragment),
-    OrderBooksAdapter.OnBookClickListener
-{
+class RegisterOrderFragment : Fragment(R.layout.register_order_fragment) {
 
     private lateinit var binding: RegisterOrderFragmentBinding
     private lateinit var v: View
+
     private val viewModel: RegisterOrderViewModel by activityViewModels() {
         ViewModelFactory(
             RepositoryImpl(
@@ -36,9 +33,6 @@ class RegisterOrderFragment :
             )
         )
     }
-
-    private lateinit var linearLayoutManager: LinearLayoutManager
-    private lateinit var orderBooksAdapter: OrderBooksAdapter
 
     private var bookList = mutableListOf<Book>()
 
@@ -55,52 +49,10 @@ class RegisterOrderFragment :
         val prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
         Log.d("NM",prefs.getString("language","es")!!)
 
-        setupRecycleView()
-        setupObservers()
-
-
         binding.btnEnter.setOnClickListener {
-            val clientName = binding.edtUser.text.toString()
-            if(bookList.isNotEmpty() && clientName.isNotBlank()){
-                viewModel.insertOrder(clientName, bookList)
-                Toast.makeText(requireContext(), "Orden Cargada", Toast.LENGTH_SHORT).show()
-                bookList.clear()
-                binding.edtUser.text.clear()
-            }
+            val clientName = "NM"
+            viewModel.insertOrder(clientName, bookList)
+            Toast.makeText(requireContext(), "Orden Cargada", Toast.LENGTH_SHORT).show()
         }
     }
-
-    private fun setupObservers() {
-        viewModel.fetchBooks().observe(viewLifecycleOwner, { result ->
-            //Log.d("NM", "fetch $result")
-            when (result) {
-                is Resource.Loading -> {
-                    Log.d("LiveData", "Loading...")
-                }
-                is Resource.Success -> {
-                    orderBooksAdapter = OrderBooksAdapter(
-                        requireContext(),
-                        result.data!!,
-                        this
-                    )
-                    binding.rvOrderBooks.adapter = orderBooksAdapter
-                }
-                is Resource.Failure -> {
-                    Log.d("LiveData", "${result.exception}")
-                }
-            }
-        })
-    }
-
-    private fun setupRecycleView() {
-        binding.rvOrderBooks.setHasFixedSize(true)
-        linearLayoutManager = LinearLayoutManager(context)
-        binding.rvOrderBooks.layoutManager = linearLayoutManager
-    }
-
-    override fun onBookClick(position: Int, book: Book) {
-        bookList.add(book)
-        Toast.makeText(requireContext(), "Libro agregado", Toast.LENGTH_SHORT).show()
-    }
-
 }

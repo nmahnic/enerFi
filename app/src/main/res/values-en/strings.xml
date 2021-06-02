@@ -11,8 +11,7 @@
 
     <!-- Nav Drawer Screen-->
     <string name="logout">Log out</string>
-    <string name="register">Load Order</string>
-    <string name="editStock">Update Stock</string>
+    <string name="register">Register Device</string>
 
     <!-- New Order Screen-->
     <string name="registerOrder">Add order</string>
@@ -36,5 +35,6 @@
     <string name="language_title">Choice Language</string>
     <string name="load">Load</string>
     <string name="client">Client</string>
+    <string name="login">LOGIN</string>
 
 </resources>

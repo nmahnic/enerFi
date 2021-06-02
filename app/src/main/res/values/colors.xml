@@ -7,11 +7,12 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="top">#2E376D</color>
+<!--    <color name="top">#2E376D</color>-->
+    <color name="top">#357a38</color>
     <color name="screenBackground1">#343E7A</color>
     <color name="screenBackground2">#546098</color>
 <!--    <color name="top2">#394167</color>-->
-    <color name="top2">#343E7A</color>
+    <color name="top2">#3d8b40</color>
     <color name="yellow_letters">#FBE99E</color>
     <color name="light_blue_600">#FF039BE5</color>
     <color name="light_blue_900">#FF01579B</color>
@@ -20,7 +21,9 @@
     <color name="black_overlay">#66000000</color>
 
 
-    <color name="endColor">#424b77</color>
-    <color name="centerColor">#546098</color>
-    <color name="startColor">#808ab9</color>
+    <color name="endColor">#357a38</color>
+    <color name="centerColor">#4caf50</color>
+    <color name="startColor">#80c883</color>
+
+    <color name="green_1">#4CAF50</color>
 </resources>

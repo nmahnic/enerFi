@@ -10,10 +10,6 @@
             android:id="@+id/registerOrder"
             android:icon="@drawable/ic_baseline_add_circle_24"
             android:title="@string/register" />
-        <item
-            android:id="@+id/editStock"
-            android:icon="@drawable/ic_baseline_add_circle_24"
-            android:title="@string/editStock" />
     </group>
 
 </menu>
