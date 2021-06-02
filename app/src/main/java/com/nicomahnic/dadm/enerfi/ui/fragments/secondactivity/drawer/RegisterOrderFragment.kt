@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.espressif.provisioning.ESPProvisionManager
 import com.nicomahnic.dadm.enerfi.R
 import com.nicomahnic.dadm.enerfi.core.Resource
 import com.nicomahnic.dadm.enerfi.data.DataSource
@@ -48,6 +49,8 @@ class RegisterOrderFragment : Fragment(R.layout.register_order_fragment) {
 
         val prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
         Log.d("NM",prefs.getString("language","es")!!)
+
+        val hola = ESPProvisionManager.getInstance(context)
 
         binding.btnEnter.setOnClickListener {
             val clientName = "NM"
