@@ -16,7 +16,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.nicomahnic.dadm.enerfi.R
 import com.nicomahnic.dadm.enerfi.data.database.AppDatabase
 import com.nicomahnic.dadm.enerfi.data.entities.UserEntity
-import com.nicomahnic.dadm.enerfi.databinding.FragmentLoginBinding
 import com.nicomahnic.dadm.enerfi.domain.UserDao
 import com.nicomahnic.dadm.enerfi.ui.activities.SecondActivity
 import kotlinx.android.synthetic.main.fragment_login.*
@@ -32,7 +31,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     val authUser: FirebaseAuth by lazy { FirebaseAuth.getInstance() }
 
-    private lateinit var binding: FragmentLoginBinding
+//    private lateinit var binding: FragmentLoginBinding
     private var db: AppDatabase? = null
     private var userDao: UserDao? = null
 
@@ -47,7 +46,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentLoginBinding.bind(view)
+//        binding = FragmentLoginBinding.bind(view)
 
         val prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
         Log.d("NM",prefs.getString("language","es")!!)
@@ -56,11 +55,11 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
         v = view
 
-        binding.edtUser.apply { addTextChangedListener(userWatcher) }
+        edtUser.apply { addTextChangedListener(userWatcher) }
 
-        binding.edtPasswd.apply { addTextChangedListener(passwdWatcher) }
+        edtPasswd.apply { addTextChangedListener(passwdWatcher) }
 
-        binding.btnEnter.isEnabled = false
+        btnEnter.isEnabled = false
     }
 
     private fun getLanguageNameByCode(code: String) : String{
@@ -80,7 +79,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     private fun googleLogin() {
         val providers = arrayListOf(AuthUI.IdpConfig.GoogleBuilder().build())
-        binding.btnLogin.setOnClickListener {
+        btn_login.setOnClickListener {
             startActivityForResult(
                 AuthUI.getInstance()
                     .createSignInIntentBuilder()
@@ -111,7 +110,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             println("afterTextChanged -> $s")
 
             btnUser = s.toString().isNotEmpty()
-            binding.btnEnter.isEnabled = btnUser && btnPasswd
+            btnEnter.isEnabled = btnUser && btnPasswd
 
         }
 
@@ -125,7 +124,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             println("afterTextChanged -> $s")
 
             btnPasswd = s.toString().isNotEmpty()
-            binding.btnEnter.isEnabled = btnUser && btnPasswd
+            btnEnter.isEnabled = btnUser && btnPasswd
 
         }
 
@@ -162,8 +161,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         Log.d("NM", "userList = ${usersList}")
 
 
-        binding.btnEnter.setOnClickListener {
-            val validUser = usersList!!.find { it!!.name == binding.edtUser.text.toString() }
+        btnEnter.setOnClickListener {
+            val validUser = usersList!!.find { it!!.name == edtUser.text.toString() }
 
             validateUser(validUser)?.let {
                 val sendIntent = Intent(context, SecondActivity::class.java)
@@ -177,7 +176,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     private fun validateUser(validUser: UserEntity?): Boolean? {
         validUser?.let { user ->
-            if (user.password == binding.edtPasswd.text.toString()) user.checked = true
+            if (user.password == edtPasswd.text.toString()) user.checked = true
             if (user.checked) {
                 return true
             } else {

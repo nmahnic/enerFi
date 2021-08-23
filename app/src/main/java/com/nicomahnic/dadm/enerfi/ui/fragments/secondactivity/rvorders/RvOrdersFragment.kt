@@ -12,16 +12,16 @@ import com.nicomahnic.dadm.enerfi.R
 import com.nicomahnic.dadm.enerfi.core.Resource
 import com.nicomahnic.dadm.enerfi.data.DataSource
 import com.nicomahnic.dadm.enerfi.data.database.AppDatabase
-import com.nicomahnic.dadm.enerfi.databinding.RvOrdersFragmentBinding
 import com.nicomahnic.dadm.enerfi.repository.RepositoryImpl
 import com.nicomahnic.dadm.enerfi.ui.activities.SecondActivity
 import com.nicomahnic.dadm.enerfi.ui.adapter.OrdersAdapter
 import com.nicomahnic.dadm.enerfi.viewmodel.RvOrdersViewModel
 import com.nicomahnic.dadm.enerfi.viewmodel.ViewModelFactory
+import kotlinx.android.synthetic.main.rv_orders_fragment.*
 
 class RvOrdersFragment : Fragment(R.layout.rv_orders_fragment) {
 
-    private lateinit var binding: RvOrdersFragmentBinding
+//    private lateinit var binding: RvOrdersFragmentBinding
     private lateinit var v: View
     private val viewModel by viewModels<RvOrdersViewModel>{
         ViewModelFactory(
@@ -39,7 +39,7 @@ class RvOrdersFragment : Fragment(R.layout.rv_orders_fragment) {
 
     override fun onViewCreated (view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = RvOrdersFragmentBinding.bind(view)
+//        binding = RvOrdersFragmentBinding.bind(view)
 
         v = view
 
@@ -53,9 +53,9 @@ class RvOrdersFragment : Fragment(R.layout.rv_orders_fragment) {
         val prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
         Log.d("NM",prefs.getString("language","es")!!)
 
-        binding.rvOrders.setHasFixedSize(true)
+        rv_orders.setHasFixedSize(true)
         linearLayoutManager = LinearLayoutManager(context)
-        binding.rvOrders.layoutManager = linearLayoutManager
+        rv_orders.layoutManager = linearLayoutManager
 
         viewModel.fetchOrderList().observe(viewLifecycleOwner, Observer { result ->
             when(result){
@@ -77,7 +77,7 @@ class RvOrdersFragment : Fragment(R.layout.rv_orders_fragment) {
 
                             v.findNavController().navigate(action)
                         }
-                        binding.rvOrders.adapter = ordersAdapter
+                        rv_orders.adapter = ordersAdapter
                     }
                 }
             }

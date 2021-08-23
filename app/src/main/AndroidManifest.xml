@@ -2,7 +2,17 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nicomahnic.dadm.enerfi">
 
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -10,18 +20,38 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.EnerFi">
-        <activity android:name=".ui.activities.SecondActivity"></activity>
+        android:theme="@style/Theme.EnerFi"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".ui.fragments.espprovisioning.WiFiConfigActivity"
+            android:label="@string/title_activity_wifi_scan_list"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.fragments.espprovisioning.ProofOfPossessionActivity"
+            android:label="@string/title_activity_pop"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.fragments.espprovisioning.WiFiScanActivity"
+            android:label="@string/title_activity_wifi_scan_list"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.fragments.espprovisioning.ProvisionLanding"
+            android:label="@string/title_activity_provision_landing"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".ui.activities.SecondActivity" />
         <activity
             android:name=".ui.activities.SettingsActivity"
+            android:configChanges="locale"
             android:label="@string/action_settings"
-            android:launchMode="standard"
-            android:configChanges="locale">
-        </activity>
+            android:launchMode="standard" />
         <activity
             android:name=".ui.activities.MainActivity"
-            android:theme="@style/Theme.EnerFi"
-            android:configChanges="locale">
+            android:configChanges="locale"
+            android:theme="@style/Theme.EnerFi">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

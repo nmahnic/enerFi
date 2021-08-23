@@ -21,10 +21,30 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            debuggable false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            resValue "string", "proof_of_possesion", "abcd1234"
+            resValue "string", "wifi_base_url", "192.168.4.1:80"
+            resValue "string", "wifi_device_name_prefix", "PROV_"
+            resValue "string", "ble_device_name_prefix", "PROV_"
+            buildConfigField "boolean", "isQrCodeSupported", "true"
+            buildConfigField "boolean", "isSettingsAllowed", "true"
+            buildConfigField "boolean", "isFilteringByPrefixAllowed", "true"
+        }
+
+        debug {
+            debuggable true
+            resValue "string", "proof_of_possesion", "abcd1234"
+            resValue "string", "wifi_base_url", "192.168.4.1:80"
+            resValue "string", "wifi_device_name_prefix", "PROV_"
+            resValue "string", "ble_device_name_prefix", "PROV_"
+            buildConfigField "boolean", "isQrCodeSupported", "true"
+            buildConfigField "boolean", "isSettingsAllowed", "true"
+            buildConfigField "boolean", "isFilteringByPrefixAllowed", "true"
         }
     }
     compileOptions {
@@ -35,9 +55,9 @@ android {
         jvmTarget = '1.8'
     }
 
-    buildFeatures {
-        viewBinding true
-    }
+//    buildFeatures {
+//        viewBinding true
+//    }
 
     configurations {
 //        implementation.exclude module:'proto-google-common-protos'
@@ -66,9 +86,9 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
     
     //room
-    implementation "androidx.room:room-runtime:2.2.6"
-    kapt "androidx.room:room-compiler:2.2.6"
-    implementation "androidx.room:room-ktx:2.2.6"
+    implementation "androidx.room:room-runtime:2.3.0"
+    kapt "androidx.room:room-compiler:2.3.0"
+    implementation "androidx.room:room-ktx:2.3.0"
 
     //Gson
     implementation 'com.google.code.gson:gson:2.8.6'
@@ -85,6 +105,12 @@ dependencies {
 
     //Preference
     implementation 'androidx.preference:preference-ktx:1.1.1'
+
+    //Network Scanner
+    implementation 'com.budiyev.android:code-scanner:2.1.0'
+    // EventBus
+    implementation 'org.greenrobot:eventbus:3.1.1'
+    implementation 'com.wang.avi:library:2.1.3'
 
     implementation 'androidx.navigation:navigation-fragment-ktx:2.2.2'
     implementation 'androidx.navigation:navigation-ui-ktx:2.2.2'

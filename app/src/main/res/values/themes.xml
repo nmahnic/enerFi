@@ -24,5 +24,9 @@
     <style name="Theme.EnerFi.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.EnerFi.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="Theme.EnerFi.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 
 </resources>

@@ -12,9 +12,7 @@ import com.nicomahnic.dadm.enerfi.R
 import com.nicomahnic.dadm.enerfi.core.Resource
 import com.nicomahnic.dadm.enerfi.data.DataSource
 import com.nicomahnic.dadm.enerfi.data.database.AppDatabase
-import com.nicomahnic.dadm.enerfi.databinding.TabContainerFragmentBinding
 import com.nicomahnic.dadm.enerfi.repository.RepositoryImpl
-import com.nicomahnic.dadm.enerfi.ui.adapter.BooksAdapter
 import com.nicomahnic.dadm.enerfi.ui.adapter.TabsViewPagerAdapter
 import com.nicomahnic.dadm.enerfi.viewmodel.TabContainerViewModel
 import com.nicomahnic.dadm.enerfi.viewmodel.ViewModelFactory
@@ -22,7 +20,7 @@ import kotlinx.android.synthetic.main.tab_container_fragment.*
 
 class TabContainerFragment : Fragment(R.layout.tab_container_fragment) {
 
-    private lateinit var binding: TabContainerFragmentBinding
+//    private lateinit var binding: TabContainerFragmentBinding
     private lateinit var v: View
     private val viewModelTab: TabContainerViewModel by activityViewModels() {
         ViewModelFactory(
@@ -39,7 +37,7 @@ class TabContainerFragment : Fragment(R.layout.tab_container_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = TabContainerFragmentBinding.bind(view)
+//        binding = TabContainerFragmentBinding.bind(view)
 
         v = view
         viewPager.adapter = TabsViewPagerAdapter(requireActivity())

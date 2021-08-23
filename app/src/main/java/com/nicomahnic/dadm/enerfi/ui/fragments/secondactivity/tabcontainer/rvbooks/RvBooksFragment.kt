@@ -9,15 +9,14 @@ import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import com.nicomahnic.dadm.enerfi.R
-import com.nicomahnic.dadm.enerfi.core.Resource
-import com.nicomahnic.dadm.enerfi.databinding.RvBooksFragmentBinding
 import com.nicomahnic.dadm.enerfi.data.entities.Book
 import com.nicomahnic.dadm.enerfi.ui.adapter.BooksAdapter
 import com.nicomahnic.dadm.enerfi.viewmodel.TabContainerViewModel
+import kotlinx.android.synthetic.main.rv_books_fragment.*
 
 class RvBooksFragment : Fragment(R.layout.rv_books_fragment) {
 
-    private lateinit var binding: RvBooksFragmentBinding
+//    private lateinit var binding: RvBooksFragmentBinding
     private val viewModelTab: TabContainerViewModel by activityViewModels()
     private lateinit var v: View
 
@@ -26,7 +25,7 @@ class RvBooksFragment : Fragment(R.layout.rv_books_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = RvBooksFragmentBinding.bind(view)
+//        binding = RvBooksFragmentBinding.bind(view)
         v = view
     }
 
@@ -36,14 +35,14 @@ class RvBooksFragment : Fragment(R.layout.rv_books_fragment) {
         val prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
         Log.d("NM",prefs.getString("language","es")!!)
 
-        binding.rvBooks.setHasFixedSize(true)
+        rv_books.setHasFixedSize(true)
         linearLayoutManager = LinearLayoutManager(context)
-        binding.rvBooks.layoutManager = linearLayoutManager
+        rv_books.layoutManager = linearLayoutManager
 
         viewModelTab.currentOrder.observe(viewLifecycleOwner, { result ->
             Log.d("NM", "fetchOrder $result")
             booksAdapter = BooksAdapter(requireContext(), getBooks(result.books))
-            binding.rvBooks.adapter = booksAdapter
+            rv_books.adapter = booksAdapter
         })
     }
 

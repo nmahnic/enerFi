@@ -151,7 +151,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_date" />
 
     <Button
-        android:id="@+id/btnModify"
+        android:id="@+id/btn_modify"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="140dp"
@@ -160,12 +160,12 @@
         android:textColor="@color/screenBackground2"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnDelete"
+        app:layout_constraintEnd_toStartOf="@+id/btn_delete"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_date_label2" />
 
     <Button
-        android:id="@+id/btnDelete"
+        android:id="@+id/btn_delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="140dp"
@@ -175,7 +175,7 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnModify"
+        app:layout_constraintStart_toEndOf="@+id/btn_modify"
         app:layout_constraintTop_toBottomOf="@+id/txt_date_label2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,18 +9,18 @@ import androidx.fragment.app.activityViewModels
 import androidx.preference.PreferenceManager
 import com.nicomahnic.dadm.enerfi.R
 import com.nicomahnic.dadm.enerfi.core.Resource
-import com.nicomahnic.dadm.enerfi.databinding.BookDetailsFragmentBinding
 import com.nicomahnic.dadm.enerfi.viewmodel.TabContainerViewModel
+import kotlinx.android.synthetic.main.book_details_fragment.*
 
 class BookDetailsFragment : Fragment(R.layout.book_details_fragment) {
 
     private val viewModelTab: TabContainerViewModel by activityViewModels()
-    private lateinit var binding: BookDetailsFragmentBinding
+//    private lateinit var binding: BookDetailsFragmentBinding
     private lateinit var v: View
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = BookDetailsFragmentBinding.bind(view)
+//        binding = BookDetailsFragmentBinding.bind(view)
         v = view
     }
 
@@ -37,8 +37,8 @@ class BookDetailsFragment : Fragment(R.layout.book_details_fragment) {
                     Log.d("LiveData", "Loading...")
                 }
                 is Resource.Success -> {
-                    binding.txtOrderNum.text = result.data!!.id.toString().padStart(5,'0')
-                    binding.edtTitle.setText(result.data!!.name)
+                    txt_order_num.text = result.data!!.id.toString().padStart(5,'0')
+                    edt_title.setText(result.data!!.name)
                 }
                 is Resource.Failure -> {
                     Log.d("LiveData", "${result.exception}")
@@ -46,13 +46,13 @@ class BookDetailsFragment : Fragment(R.layout.book_details_fragment) {
             }
         })
 
-        binding.btnModify.setOnClickListener {
-            val newName = binding.edtTitle.text.toString()
+        btn_modify.setOnClickListener {
+            val newName = edt_title.text.toString()
             viewModelTab.updateOrder(newName)
             Toast.makeText(requireContext(), "Nombre Modificado", Toast.LENGTH_SHORT).show()
         }
 
-        binding.btnDelete.setOnClickListener {
+        btn_delete.setOnClickListener {
             viewModelTab.deleteOrder()
             Toast.makeText(requireContext(), "Orden Eliminada", Toast.LENGTH_SHORT).show()
         }
