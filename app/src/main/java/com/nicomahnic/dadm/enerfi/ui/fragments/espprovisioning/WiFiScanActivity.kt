@@ -1,8 +1,6 @@
 package com.nicomahnic.dadm.enerfi.ui.fragments.espprovisioning
 
-import android.content.ContentValues.TAG
 import android.content.DialogInterface
-import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.text.TextUtils
@@ -20,7 +18,6 @@ import com.espressif.provisioning.listeners.WiFiScanListener
 import com.google.android.material.textfield.TextInputLayout
 import com.nicomahnic.dadm.enerfi.R
 import com.nicomahnic.dadm.enerfi.ui.adapter.WiFiListAdapter
-import com.nicomahnic.dadm.enerfi.utils.AppConstants
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode

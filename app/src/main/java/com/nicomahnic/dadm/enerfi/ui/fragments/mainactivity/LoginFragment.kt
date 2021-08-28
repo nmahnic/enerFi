@@ -59,7 +59,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
         edtPasswd.apply { addTextChangedListener(passwdWatcher) }
 
-        btnEnter.isEnabled = false
+        btnEnter.isEnabled = true
+//        btnEnter.isEnabled = false
     }
 
     private fun getLanguageNameByCode(code: String) : String{
@@ -150,7 +151,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             )
             userDao?.insertPerson(
                 UserEntity(
-                    id = 0,
+                    id = 1,
                     name = "Tiago",
                     password = "1234",
                     img = "https://scontent.faep25-1.fna.fbcdn.net/v/t31.18172-8/21013880_10212018262726146_6287464117982848076_o.jpg?_nc_cat=106&ccb=1-3&_nc_sid=09cbfe&_nc_ohc=j1Rr-fLmSxUAX9RQ2Ut&_nc_ht=scontent.faep25-1.fna&oh=06256b0f0165aa954c47922516a1d00a&oe=60DC7372"
