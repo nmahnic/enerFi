@@ -22,32 +22,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.EnerFi"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".ui.fragments.espprovisioning.WiFiConfigActivity"
-            android:label="@string/title_activity_wifi_scan_list"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ui.fragments.espprovisioning.ProofOfPossessionActivity"
-            android:label="@string/title_activity_pop"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ui.fragments.espprovisioning.WiFiScanActivity"
-            android:label="@string/title_activity_wifi_scan_list"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ui.fragments.espprovisioning.ProvisionLanding"
-            android:label="@string/title_activity_provision_landing"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".ui.activities.SecondActivity" />
         <activity
             android:name=".ui.activities.SettingsActivity"
             android:configChanges="locale"
             android:label="@string/action_settings"
-            android:launchMode="standard" />
+            android:launchMode="standard">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".ui.activities.MainActivity"
             android:configChanges="locale"

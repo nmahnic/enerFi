@@ -8,31 +8,41 @@
     tools:context=".ui.fragments.secondactivity.drawer.RegisterOrderFragment"
     android:background="@color/white">
 
-    <Button
-        android:id="@+id/btnEnter"
+    <TextView
+        android:id="@+id/tvTitle1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="100dp"
-        android:backgroundTint="@color/green_1"
-        android:text="@string/load" />
+        android:layout_marginTop="8dp"
+        android:text="@string/user"
+        android:textSize="24sp" />
 
-    <com.budiyev.android.codescanner.CodeScannerView
-        android:id="@+id/scanner_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="invisible"
-        app:autoFocusButtonColor="@android:color/white"
-        app:autoFocusButtonVisible="false"
-        app:flashButtonColor="@android:color/white"
-        app:flashButtonVisible="false"
-        app:frameColor="@android:color/white"
-        app:frameCornersSize="50dp"
-        app:frameCornersRadius="0dp"
-        app:frameAspectRatioWidth="1"
-        app:frameAspectRatioHeight="1"
-        app:frameSize="0.75"
-        app:frameThickness="2dp"
-        app:maskColor="#77000000"/>
+    <TextView
+        android:id="@+id/tvNormal1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="96dp"
+        android:ems="10"
+        android:hint="@string/name"
+        android:text="Mash"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/tvTitle2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/password"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/tvNormal2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:text="1234" />
+
+
+
+
+
 
 </LinearLayout>

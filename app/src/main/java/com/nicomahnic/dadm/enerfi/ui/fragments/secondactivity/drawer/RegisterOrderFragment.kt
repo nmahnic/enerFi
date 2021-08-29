@@ -1,72 +1,79 @@
 package com.nicomahnic.dadm.enerfi.ui.fragments.secondactivity.drawer
 
-import android.app.Activity
 import android.content.Intent
-import android.location.LocationManager
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.fragment.app.activityViewModels
-import androidx.preference.PreferenceManager
-import com.budiyev.android.codescanner.CodeScanner
-import com.espressif.provisioning.ESPConstants
-import com.espressif.provisioning.ESPProvisionManager
-import com.nicomahnic.dadm.enerfi.R
-import com.nicomahnic.dadm.enerfi.data.DataSource
-import com.nicomahnic.dadm.enerfi.data.database.AppDatabase
-import com.nicomahnic.dadm.enerfi.data.entities.Book
-import com.nicomahnic.dadm.enerfi.repository.RepositoryImpl
-import com.nicomahnic.dadm.enerfi.ui.fragments.espprovisioning.ProvisionLanding
-import com.nicomahnic.dadm.enerfi.viewmodel.RegisterOrderViewModel
-import com.nicomahnic.dadm.enerfi.viewmodel.ViewModelFactory
+import androidx.appcompat.app.AppCompatActivity
+import com.nicomahnic.tests.sender.Payment
 import kotlinx.android.synthetic.main.register_order_fragment.*
-import java.lang.Exception
 
 class RegisterOrderFragment : Fragment() { //R.layout.register_order_fragment
 
-//    private lateinit var binding: RegisterOrderFragmentBinding
-    private lateinit var v: View
+    private lateinit var payment: Payment
 
-    private var networkEnabled: Boolean = false
-
-    private val viewModel: RegisterOrderViewModel by activityViewModels() {
-        ViewModelFactory(
-            RepositoryImpl(
-                DataSource(
-                    requireContext(),
-                    AppDatabase.getAppDataBase(requireActivity().applicationContext)
-                )
-            )
-        )
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        try {
-            val lm = requireContext().getSystemService(Activity.LOCATION_SERVICE) as LocationManager
-            networkEnabled = lm.isProviderEnabled(LocationManager.NETWORK_PROVIDER)
-        } catch (ex: Exception) {
-        }
-        val securityType = 1
-        val provisionManager = ESPProvisionManager.getInstance(requireContext())
-        provisionManager.createESPDevice(ESPConstants.TransportType.TRANSPORT_SOFTAP, ESPConstants.SecurityType.SECURITY_1)
-        goToWiFiProvisionLandingActivity(securityType)
+        goToWiFiProvisionLandingActivity()
 
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
-    private fun goToWiFiProvisionLandingActivity(securityType: Int) {
-        val wifiProvisioningIntent = Intent(requireContext(), ProvisionLanding::class.java)
-        wifiProvisioningIntent.putExtra(KEY_SECURITY_TYPE, securityType)
-        startActivity(wifiProvisioningIntent)
+    private fun goToWiFiProvisionLandingActivity() {
+        val transaction = DoPayment(
+            currency = "UYU",
+            currencyCode = 858,
+            transactionType = TransactionType.SALE.name,
+            amount = 12.50,
+        )
+        payment = Payment.getInstance(requireContext())
+        val newIntent = payment.launchIngpPinpad(transaction, requireActivity().packageManager)
+
+        startActivityForResult(newIntent.first,newIntent.second)
     }
 
-    companion object {
-        const val KEY_SECURITY_TYPE = "security_type"
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == Payment.REQUEST_CODE && resultCode == AppCompatActivity.RESULT_OK) {
+            val transactionResult = data!!.getStringExtra("transactionResult")!!
+            val errorCode = data.getStringExtra("errorCode")
+            val issuer = data.getStringExtra("issuer")
+            Log.d("NM", "2) Respuesta transactionResult:${transactionResult}")
+            Log.d("NM", "2) Respuesta errorCode:${errorCode}")
+            Log.d("NM", "2) Respuesta issuer:${issuer}")
+
+            tvNormal1.text = transactionResult
+            tvNormal2.text = errorCode.toString()
+
+        }
     }
 
+
+}
+
+data class DoPayment(
+    val currency: String,
+    val currencyCode: Int,
+    val transactionType: String,
+    val amount: Double
+)
+
+data class PaymentResault(
+    val transactionResault: String,
+    val errorCode: String,
+    val issuer: String,
+    val installments: Int,
+    val approvedCode: String,
+    val rrn: String,
+    val maskedCardNo: String
+)
+
+enum class TransactionType {
+    SALE,
+    OFFLINE_SALE,
+    VOID,
+    REFUND,
 }
