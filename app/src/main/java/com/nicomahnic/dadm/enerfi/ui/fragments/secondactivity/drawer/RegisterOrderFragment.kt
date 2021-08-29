@@ -8,19 +8,27 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import com.nicomahnic.dadm.enerfi.R
 import com.nicomahnic.tests.sender.Payment
 import kotlinx.android.synthetic.main.register_order_fragment.*
 
-class RegisterOrderFragment : Fragment() { //R.layout.register_order_fragment
+class RegisterOrderFragment : Fragment(R.layout.register_order_fragment) { //R.layout.register_order_fragment
 
     private lateinit var payment: Payment
+    private var v: View? = null
+
+    private var transactionResult = ""
+    private var errorCode = ""
+    private var issuer = ""
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
+
         goToWiFiProvisionLandingActivity()
 
-        return super.onCreateView(inflater, container, savedInstanceState)
+        v = super.onCreateView(inflater, container, savedInstanceState)
+        return v
     }
 
     private fun goToWiFiProvisionLandingActivity() {
@@ -38,19 +46,18 @@ class RegisterOrderFragment : Fragment() { //R.layout.register_order_fragment
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == Payment.REQUEST_CODE && resultCode == AppCompatActivity.RESULT_OK) {
-            val transactionResult = data!!.getStringExtra("transactionResult")!!
-            val errorCode = data.getStringExtra("errorCode")
-            val issuer = data.getStringExtra("issuer")
+            transactionResult = data!!.getStringExtra("transactionResult")!!
+            errorCode = data.getStringExtra("errorCode") ?: ""
+            issuer = data.getStringExtra("issuer") ?: ""
             Log.d("NM", "2) Respuesta transactionResult:${transactionResult}")
             Log.d("NM", "2) Respuesta errorCode:${errorCode}")
             Log.d("NM", "2) Respuesta issuer:${issuer}")
 
             tvNormal1.text = transactionResult
-            tvNormal2.text = errorCode.toString()
+            tvNormal2.text = errorCode
 
         }
     }
-
 
 }
 

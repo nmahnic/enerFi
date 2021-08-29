@@ -23,8 +23,7 @@
         android:layout_marginBottom="96dp"
         android:ems="10"
         android:hint="@string/name"
-        android:text="Mash"
-        android:textColor="@color/black" />
+        tools:text="Mash" />
 
     <TextView
         android:id="@+id/tvTitle2"
@@ -38,11 +37,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:text="1234" />
-
-
-
-
-
+        tools:text="1234" />
 
 </LinearLayout>
