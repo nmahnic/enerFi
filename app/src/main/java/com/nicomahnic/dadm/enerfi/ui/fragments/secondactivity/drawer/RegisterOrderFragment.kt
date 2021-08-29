@@ -9,25 +9,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import com.nicomahnic.dadm.enerfi.R
-import com.nicomahnic.tests.sender.Payment
+import com.nicomahnic.tests.sender.ESPtransaction
 import kotlinx.android.synthetic.main.register_order_fragment.*
 
 class RegisterOrderFragment : Fragment(R.layout.register_order_fragment) { //R.layout.register_order_fragment
 
-    private lateinit var payment: Payment
+    private lateinit var espTransaction: ESPtransaction
     private var v: View? = null
 
-    private var transactionResult = ""
+    private var deviceName = ""
+    private var ssid = ""
     private var errorCode = ""
-    private var issuer = ""
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-
-        transactionResult = ""
-        errorCode = ""
-        issuer = ""
         
         goToWiFiProvisionLandingActivity()
 
@@ -36,55 +32,35 @@ class RegisterOrderFragment : Fragment(R.layout.register_order_fragment) { //R.l
     }
 
     private fun goToWiFiProvisionLandingActivity() {
-        val transaction = DoPayment(
-            currency = "UYU",
-            currencyCode = 858,
-            transactionType = TransactionType.SALE.name,
-            amount = 12.50,
+        val transaction = EspRequest(
+            inputData = "UYU"
         )
-        payment = Payment.getInstance(requireContext())
-        val newIntent = payment.launchIngpPinpad(transaction, requireActivity().packageManager)
+        espTransaction = ESPtransaction.getInstance(requireContext())
+        val newIntent = espTransaction.launchIngpPinpad(transaction, requireActivity().packageManager)
 
         startActivityForResult(newIntent.first,newIntent.second)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if (requestCode == Payment.REQUEST_CODE && resultCode == AppCompatActivity.RESULT_OK) {
-            transactionResult = data!!.getStringExtra("transactionResult")!!
+        if (requestCode == ESPtransaction.REQUEST_CODE && resultCode == AppCompatActivity.RESULT_OK) {
+            deviceName = data!!.getStringExtra("deviceName")!!
             errorCode = data.getStringExtra("errorCode") ?: ""
-            issuer = data.getStringExtra("issuer") ?: ""
-            Log.d("NM", "2) Respuesta transactionResult:${transactionResult}")
-            Log.d("NM", "2) Respuesta errorCode:${errorCode}")
-            Log.d("NM", "2) Respuesta issuer:${issuer}")
+            ssid = data.getStringExtra("ssid") ?: ""
+            Log.d("NM", "2) Respuesta -> deviceName: ${deviceName}")
+            Log.d("NM", "2) Respuesta -> errorCode:  ${errorCode}")
+            Log.d("NM", "2) Respuesta -> ssid:       ${ssid}")
 
-            tvNormal1.text = transactionResult
-            tvNormal2.text = errorCode
+            edtDeviceName.setText(deviceName)
+            edtSsid.setText(ssid)
 
         }
     }
 
+    data class EspRequest(
+        val inputData: String
+    )
+
 }
 
-data class DoPayment(
-    val currency: String,
-    val currencyCode: Int,
-    val transactionType: String,
-    val amount: Double
-)
 
-data class PaymentResault(
-    val transactionResault: String,
-    val errorCode: String,
-    val issuer: String,
-    val installments: Int,
-    val approvedCode: String,
-    val rrn: String,
-    val maskedCardNo: String
-)
 
-enum class TransactionType {
-    SALE,
-    OFFLINE_SALE,
-    VOID,
-    REFUND,
-}

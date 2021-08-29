@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:layout_marginStart="32dp"
+    android:layout_marginEnd="32dp"
     tools:context=".ui.fragments.secondactivity.drawer.RegisterOrderFragment"
     android:background="@color/white">
 
@@ -13,30 +15,58 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="@string/user"
+        android:text="@string/deviceName"
         android:textSize="24sp" />
 
-    <TextView
-        android:id="@+id/tvNormal1"
+    <EditText
+        android:id="@+id/edtDeviceName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="96dp"
         android:ems="10"
-        android:hint="@string/name"
-        tools:text="Mash" />
+        android:hint="@string/unknown" />
 
+    <Space android:layout_height="30dp" android:layout_width="match_parent"/>
     <TextView
         android:id="@+id/tvTitle2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/password"
+        android:text="@string/ssid"
         android:textSize="24sp" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/edtSsid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:editable="false"
+            tools:hint="@string/unknown" />
+
+        <Space android:layout_height="match_parent" android:layout_width="30dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Config"/>
+
+    </LinearLayout>
+
+    <Space android:layout_height="30dp" android:layout_width="match_parent"/>
     <TextView
-        android:id="@+id/tvNormal2"
+        android:id="@+id/tvTitle3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        tools:text="1234" />
+        android:text="@string/description"
+        android:textSize="24sp" />
+
+    <EditText
+        android:id="@+id/edtNormal3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="20"
+        tools:hint="Televisor, Horno Eléctico" />
 
 </LinearLayout>

@@ -4,43 +4,37 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
-import com.google.gson.Gson
-import com.nicomahnic.dadm.enerfi.ui.fragments.secondactivity.drawer.DoPayment
-import com.nicomahnic.dadm.enerfi.ui.fragments.secondactivity.drawer.PaymentResault
+import com.nicomahnic.dadm.enerfi.ui.fragments.secondactivity.drawer.RegisterOrderFragment
 
-class Payment private constructor(val context: Context){
+class ESPtransaction private constructor(val context: Context){
 
     companion object{
         @Volatile
-        private var INSTANCE: Payment? = null
+        private var INSTANCE: ESPtransaction? = null
         const val REQUEST_CODE = 255
 
 
-        fun getInstance(context: Context): Payment {
+        fun getInstance(context: Context): ESPtransaction {
             val tempInstance = INSTANCE
 
             tempInstance?.let { return tempInstance }
 
             synchronized(this) {
-                val instance = Payment(context)
+                val instance = ESPtransaction(context)
                 INSTANCE = instance
                 return instance
             }
         }
     }
 
-    fun launchIngpPinpad(data: DoPayment, pm: PackageManager) :
+    fun launchIngpPinpad(data: RegisterOrderFragment.EspRequest, pm: PackageManager) :
             Pair<Intent, Int>{
         Log.d("NM", "1) Envio ${data}")
 
 
         val sendIntent = Intent()
         sendIntent.action = Intent.ACTION_SEND
-        sendIntent.putExtra("currency",data.currency)
-        sendIntent.putExtra("currencyCode",data.currencyCode)
-        sendIntent.putExtra("transactionType",data.transactionType)
-        sendIntent.putExtra("amount",data.amount)
+        sendIntent.putExtra("inputData",data.inputData)
         sendIntent.type = "text/plain"
 
 
