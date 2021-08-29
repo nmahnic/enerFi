@@ -25,6 +25,10 @@ class RegisterOrderFragment : Fragment(R.layout.register_order_fragment) { //R.l
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
 
+        transactionResult = ""
+        errorCode = ""
+        issuer = ""
+        
         goToWiFiProvisionLandingActivity()
 
         v = super.onCreateView(inflater, container, savedInstanceState)
