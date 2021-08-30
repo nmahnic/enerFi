@@ -9,7 +9,7 @@ import com.nicomahnic.dadm.enerfi.repository.Repository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class RegisterOrderViewModel(private val repo: Repository) : ViewModel() {
+class RegisterDeviceViewModel(private val repo: Repository) : ViewModel() {
     val clientName = MutableLiveData<String>()
 
     fun fetchBooks() = liveData(Dispatchers.IO) {

@@ -16,6 +16,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.nicomahnic.dadm.enerfi.R
 import com.nicomahnic.dadm.enerfi.data.database.AppDatabase
 import com.nicomahnic.dadm.enerfi.data.entities.UserEntity
+import com.nicomahnic.dadm.enerfi.databinding.FragmentLoginBinding
 import com.nicomahnic.dadm.enerfi.domain.UserDao
 import com.nicomahnic.dadm.enerfi.ui.activities.SecondActivity
 import kotlinx.android.synthetic.main.fragment_login.*
@@ -31,7 +32,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     val authUser: FirebaseAuth by lazy { FirebaseAuth.getInstance() }
 
-//    private lateinit var binding: FragmentLoginBinding
+    private lateinit var binding: FragmentLoginBinding
     private var db: AppDatabase? = null
     private var userDao: UserDao? = null
 
@@ -46,7 +47,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        binding = FragmentLoginBinding.bind(view)
+        binding = FragmentLoginBinding.bind(view)
 
         val prefs = PreferenceManager.getDefaultSharedPreferences(requireContext())
         Log.d("NM",prefs.getString("language","es")!!)
@@ -55,12 +56,12 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
         v = view
 
-        edtUser.apply { addTextChangedListener(userWatcher) }
+        binding.edtUser.apply { addTextChangedListener(userWatcher) }
 
-        edtPasswd.apply { addTextChangedListener(passwdWatcher) }
+        binding.edtPasswd.apply { addTextChangedListener(passwdWatcher) }
 
-        btnEnter.isEnabled = true
-//        btnEnter.isEnabled = false
+        binding.btnEnter.isEnabled = true
+//        binding.btnEnter.isEnabled = false
     }
 
     private fun getLanguageNameByCode(code: String) : String{
@@ -111,7 +112,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             println("afterTextChanged -> $s")
 
             btnUser = s.toString().isNotEmpty()
-            btnEnter.isEnabled = btnUser && btnPasswd
+            binding.btnEnter.isEnabled = btnUser && btnPasswd
 
         }
 
@@ -125,7 +126,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             println("afterTextChanged -> $s")
 
             btnPasswd = s.toString().isNotEmpty()
-            btnEnter.isEnabled = btnUser && btnPasswd
+            binding.btnEnter.isEnabled = btnUser && btnPasswd
 
         }
 

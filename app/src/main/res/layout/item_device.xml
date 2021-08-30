@@ -16,36 +16,32 @@
 
 
         <TextView
-            android:id="@+id/txt_book_title"
+            android:id="@+id/tvDeviceName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="8dp"
             android:text="Title"
             android:textSize="26sp"
-            app:layout_constraintBottom_toTopOf="@+id/txt_author"
             app:layout_constraintEnd_toStartOf="@+id/img_item"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/txt_author"
+            android:id="@+id/tvSsid"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="8dp"
             android:layout_marginBottom="4dp"
             android:lines="1"
-            android:text="Nombre del Autor"
+            android:text="Network SSID"
             android:textSize="22sp"
-            app:layout_constraintBottom_toTopOf="@+id/txt_description"
-            app:layout_constraintEnd_toStartOf="@+id/btn_add"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_book_title" />
+            app:layout_constraintTop_toBottomOf="@+id/tvDeviceName" />
 
         <TextView
-            android:id="@+id/txt_year"
+            android:id="@+id/tvDescription"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -55,28 +51,18 @@
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txt_author" />
+            app:layout_constraintTop_toBottomOf="@+id/tvSsid" />
 
         <ImageView
             android:id="@+id/img_item"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
             android:layout_marginEnd="4dp"
             android:scaleType="fitCenter"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_launcher_foreground" />
-
-        <ImageView
-            android:id="@+id/btn_add"
-            android:layout_width="52dp"
-            android:layout_height="53dp"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/img_item"
-            app:layout_constraintTop_toBottomOf="@+id/txt_book_title"
-            app:srcCompat="@drawable/ic_baseline_add_circle_24" />
+            app:srcCompat="@drawable/ic_baseline_electrical_services_24" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

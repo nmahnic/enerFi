@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 import com.nicomahnic.dadm.enerfi.R
 import com.nicomahnic.dadm.enerfi.data.entities.Book
-import com.nicomahnic.dadm.enerfi.ui.adapter.BooksAdapter
 import com.nicomahnic.dadm.enerfi.viewmodel.TabContainerViewModel
 import kotlinx.android.synthetic.main.rv_books_fragment.*
 
@@ -21,7 +20,7 @@ class RvBooksFragment : Fragment(R.layout.rv_books_fragment) {
     private lateinit var v: View
 
     private lateinit var linearLayoutManager: LinearLayoutManager
-    private lateinit var booksAdapter: BooksAdapter
+//    private lateinit var booksAdapter: BooksAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -41,8 +40,8 @@ class RvBooksFragment : Fragment(R.layout.rv_books_fragment) {
 
         viewModelTab.currentOrder.observe(viewLifecycleOwner, { result ->
             Log.d("NM", "fetchOrder $result")
-            booksAdapter = BooksAdapter(requireContext(), getBooks(result.books))
-            rv_books.adapter = booksAdapter
+//            booksAdapter = BooksAdapter(requireContext(), getBooks(result.books))
+//            rv_books.adapter = booksAdapter
         })
     }
 

@@ -25,26 +25,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            debuggable false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            resValue "string", "proof_of_possesion", "abcd1234"
-            resValue "string", "wifi_base_url", "192.168.4.1:80"
-            resValue "string", "wifi_device_name_prefix", "PROV_"
-            resValue "string", "ble_device_name_prefix", "PROV_"
-            buildConfigField "boolean", "isQrCodeSupported", "true"
-            buildConfigField "boolean", "isSettingsAllowed", "true"
-            buildConfigField "boolean", "isFilteringByPrefixAllowed", "true"
-        }
-
-        debug {
-            debuggable true
-            resValue "string", "proof_of_possesion", "abcd1234"
-            resValue "string", "wifi_base_url", "192.168.4.1:80"
-            resValue "string", "wifi_device_name_prefix", "PROV_"
-            resValue "string", "ble_device_name_prefix", "PROV_"
-            buildConfigField "boolean", "isQrCodeSupported", "true"
-            buildConfigField "boolean", "isSettingsAllowed", "true"
-            buildConfigField "boolean", "isFilteringByPrefixAllowed", "true"
         }
     }
     compileOptions {
@@ -55,16 +36,10 @@ android {
         jvmTarget = '1.8'
     }
 
-//    buildFeatures {
-//        viewBinding true
-//    }
-
-    configurations {
-//        implementation.exclude module:'proto-google-common-protos'
-//        implementation.exclude module:'protolite-well-known-types'
-//        implementation.exclude module:'guava'
-        implementation.exclude module:'protobuf-lite'
+    buildFeatures {
+        viewBinding true
     }
+
 }
 
 dependencies {
@@ -115,5 +90,4 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.2.2'
     implementation 'androidx.navigation:navigation-ui-ktx:2.2.2'
 
-    implementation project(':provisioning')
 }

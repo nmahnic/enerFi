@@ -6,17 +6,18 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.nicomahnic.dadm.enerfi.R
 import com.nicomahnic.dadm.enerfi.data.entities.OrderEntity
-import kotlinx.android.synthetic.main.item_order.view.*
+import com.nicomahnic.dadm.enerfi.databinding.ItemDeviceBinding
 
-class OrdersAdapter(
+
+class DevicesAdapter(
     private var orderList: List<OrderEntity>,
     val onItemClick: (Int) -> Unit
-): RecyclerView.Adapter<OrdersAdapter.OrderHolder>() {
+): RecyclerView.Adapter<DevicesAdapter.OrderHolder>() {
 
-//    private lateinit var binding: ItemOrderBinding
+    private lateinit var binding: ItemDeviceBinding
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrderHolder {
-        val view =  LayoutInflater.from(parent.context).inflate(R.layout.item_order,parent,false)
+        val view =  LayoutInflater.from(parent.context).inflate(R.layout.item_device,parent,false)
         return (OrderHolder(view))
     }
 
@@ -33,9 +34,9 @@ class OrdersAdapter(
     inner class OrderHolder (itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun setItem(order: OrderEntity) {
-//            binding = ItemOrderBinding.bind(itemView)
-            itemView.txt_name_item.text = order.name
-            itemView.txt_order_num.text = order.id.toString().padStart(5,'0')
+            binding = ItemDeviceBinding.bind(itemView)
+            binding.tvDeviceName.text = order.name
+            binding.tvSsid.text = order.id.toString().padStart(5,'0')
         }
 
         fun getItem (position: Int): Unit {

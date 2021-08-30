@@ -1,72 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:layout_marginStart="32dp"
-    android:layout_marginEnd="32dp"
+
     tools:context=".ui.fragments.secondactivity.drawer.RegisterOrderFragment"
     android:background="@color/white">
 
-    <TextView
-        android:id="@+id/tvTitle1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/deviceName"
-        android:textSize="24sp" />
-
-    <EditText
-        android:id="@+id/edtDeviceName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/unknown" />
-
-    <Space android:layout_height="30dp" android:layout_width="match_parent"/>
-    <TextView
-        android:id="@+id/tvTitle2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/ssid"
-        android:textSize="24sp" />
-
     <LinearLayout
+        android:id="@+id/ll1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/margin_16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvTitle1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/deviceName"
+            android:textSize="24sp" />
 
         <EditText
-            android:id="@+id/edtSsid"
+            android:id="@+id/edtDeviceName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:editable="false"
-            tools:hint="@string/unknown" />
+            android:hint="@string/unknown" />
 
-        <Space android:layout_height="match_parent" android:layout_width="30dp"/>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
 
-        <Button
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvTitle2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dp"
+                android:text="@string/ssid"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toTopOf="@+id/edtSsid"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/edtSsid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/unknown"
+                android:editable="false"
+                android:ems="6"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitle2" />
+
+            <Button
+                android:id="@+id/btnConfigESP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Config"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+
+        <TextView
+            android:id="@+id/tvTitle3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Config"/>
+            android:text="@string/description"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/edtNormal3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="20"
+            tools:hint="Televisor, Horno Eléctico" />
 
     </LinearLayout>
 
-    <Space android:layout_height="30dp" android:layout_width="match_parent"/>
-    <TextView
-        android:id="@+id/tvTitle3"
+    <Button
+        android:id="@+id/btnSaveDevice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/description"
-        android:textSize="24sp" />
+        android:layout_marginBottom="50dp"
+        android:text="Save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/edtNormal3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="20"
-        tools:hint="Televisor, Horno Eléctico" />
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

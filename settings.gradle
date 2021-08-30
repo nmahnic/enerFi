@@ -1,3 +1,2 @@
-include ':provisioning'
 include ':app'
 rootProject.name = "enerfi"

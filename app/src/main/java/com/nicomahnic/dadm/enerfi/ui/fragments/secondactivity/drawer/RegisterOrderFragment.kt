@@ -3,32 +3,55 @@ package com.nicomahnic.dadm.enerfi.ui.fragments.secondactivity.drawer
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
 import android.view.View
-import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import com.nicomahnic.dadm.enerfi.R
+import com.nicomahnic.dadm.enerfi.data.DataSource
+import com.nicomahnic.dadm.enerfi.data.database.AppDatabase
+import com.nicomahnic.dadm.enerfi.databinding.RegisterOrderFragmentBinding
+import com.nicomahnic.dadm.enerfi.repository.RepositoryImpl
+import com.nicomahnic.dadm.enerfi.viewmodel.RegisterDeviceViewModel
+import com.nicomahnic.dadm.enerfi.viewmodel.ViewModelFactory
 import com.nicomahnic.tests.sender.ESPtransaction
 import kotlinx.android.synthetic.main.register_order_fragment.*
 
 class RegisterOrderFragment : Fragment(R.layout.register_order_fragment) { //R.layout.register_order_fragment
 
     private lateinit var espTransaction: ESPtransaction
-    private var v: View? = null
+    private lateinit var binding: RegisterOrderFragmentBinding
+    private val viewModel by viewModels<RegisterDeviceViewModel>{
+        ViewModelFactory(
+            RepositoryImpl(
+                DataSource(
+                    requireContext(),
+                    AppDatabase.getAppDataBase(requireActivity().applicationContext)
+                )
+            )
+        )
+    }
 
     private var deviceName = ""
     private var ssid = ""
     private var errorCode = ""
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding = RegisterOrderFragmentBinding.bind(view)
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
-    ): View? {
-        
-        goToWiFiProvisionLandingActivity()
+        binding.btnConfigESP.setOnClickListener{
+            goToWiFiProvisionLandingActivity()
+        }
 
-        v = super.onCreateView(inflater, container, savedInstanceState)
-        return v
+        binding.btnSaveDevice.setOnClickListener {
+            viewModel.insertOrder(
+                clientName = deviceName,
+                bookList = emptyList()
+            )
+            view.findNavController().popBackStack()
+        }
     }
 
     private fun goToWiFiProvisionLandingActivity() {

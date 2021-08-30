@@ -12,16 +12,17 @@ import com.nicomahnic.dadm.enerfi.R
 import com.nicomahnic.dadm.enerfi.core.Resource
 import com.nicomahnic.dadm.enerfi.data.DataSource
 import com.nicomahnic.dadm.enerfi.data.database.AppDatabase
+import com.nicomahnic.dadm.enerfi.databinding.RvOrdersFragmentBinding
 import com.nicomahnic.dadm.enerfi.repository.RepositoryImpl
 import com.nicomahnic.dadm.enerfi.ui.activities.SecondActivity
-import com.nicomahnic.dadm.enerfi.ui.adapter.OrdersAdapter
+import com.nicomahnic.dadm.enerfi.ui.adapter.DevicesAdapter
 import com.nicomahnic.dadm.enerfi.viewmodel.RvOrdersViewModel
 import com.nicomahnic.dadm.enerfi.viewmodel.ViewModelFactory
 import kotlinx.android.synthetic.main.rv_orders_fragment.*
 
 class RvOrdersFragment : Fragment(R.layout.rv_orders_fragment) {
 
-//    private lateinit var binding: RvOrdersFragmentBinding
+    private lateinit var binding: RvOrdersFragmentBinding
     private lateinit var v: View
     private val viewModel by viewModels<RvOrdersViewModel>{
         ViewModelFactory(
@@ -35,11 +36,11 @@ class RvOrdersFragment : Fragment(R.layout.rv_orders_fragment) {
     }
 
     private lateinit var linearLayoutManager: LinearLayoutManager
-    private lateinit var ordersAdapter: OrdersAdapter
+    private lateinit var ordersAdapter: DevicesAdapter
 
     override fun onViewCreated (view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        binding = RvOrdersFragmentBinding.bind(view)
+        binding = RvOrdersFragmentBinding.bind(view)
 
         v = view
 
@@ -67,7 +68,7 @@ class RvOrdersFragment : Fragment(R.layout.rv_orders_fragment) {
                 }
                 is Resource.Success -> {
                     result.data?.let{ orderList ->
-                        ordersAdapter = OrdersAdapter(orderList) { pos ->
+                        ordersAdapter = DevicesAdapter(orderList) { pos ->
                             Log.d("NM", pos.toString())
                             val action =
                                 RvOrdersFragmentDirections.actionRvOrdersFragmentToTabContainerFragment(

@@ -9,18 +9,17 @@ import androidx.fragment.app.activityViewModels
 import androidx.preference.PreferenceManager
 import com.nicomahnic.dadm.enerfi.R
 import com.nicomahnic.dadm.enerfi.core.Resource
+import com.nicomahnic.dadm.enerfi.databinding.BookDetailsFragmentBinding
 import com.nicomahnic.dadm.enerfi.viewmodel.TabContainerViewModel
 import kotlinx.android.synthetic.main.book_details_fragment.*
 
 class BookDetailsFragment : Fragment(R.layout.book_details_fragment) {
 
     private val viewModelTab: TabContainerViewModel by activityViewModels()
-//    private lateinit var binding: BookDetailsFragmentBinding
     private lateinit var v: View
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        binding = BookDetailsFragmentBinding.bind(view)
         v = view
     }
 

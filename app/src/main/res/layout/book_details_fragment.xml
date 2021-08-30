@@ -17,7 +17,7 @@
             android:id="@+id/img_backgroud"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/library_banner" />
+            android:src="@drawable/enerfi" />
 
         <View
             android:layout_width="match_parent"
@@ -40,7 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_ener_fi" />
+            android:src="@drawable/ic_baseline_electrical_services_24" />
     </androidx.cardview.widget.CardView>
 
     <androidx.constraintlayout.widget.Guideline

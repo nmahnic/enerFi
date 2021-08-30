@@ -3,10 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/nicol/Documents/ProyectoFinal/enerfi/app/src/main/res/drawable-v24/gradient.xml" value="0.2234375" />
+        <entry key="..\:/Users/nicol/Documents/ProyectoFinal/enerfi/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2234375" />
+        <entry key="..\:/Users/nicol/Documents/ProyectoFinal/enerfi/app/src/main/res/drawable/bg_edit_text.xml" value="0.2234375" />
+        <entry key="..\:/Users/nicol/Documents/ProyectoFinal/enerfi/app/src/main/res/drawable/ic_baseline_add_circle_24.xml" value="0.2234375" />
+        <entry key="..\:/Users/nicol/Documents/ProyectoFinal/enerfi/app/src/main/res/drawable/ic_baseline_electrical_services_24.xml" value="0.2234375" />
         <entry key="..\:/Users/nicol/Documents/ProyectoFinal/enerfi/app/src/main/res/drawable/ic_checkbox_on.xml" value="0.18489583333333334" />
         <entry key="..\:/Users/nicol/Documents/ProyectoFinal/enerfi/app/src/main/res/drawable/ic_error.xml" value="0.18489583333333334" />
+        <entry key="..\:/Users/nicol/Documents/ProyectoFinal/enerfi/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2234375" />
+        <entry key="..\:/Users/nicol/Documents/ProyectoFinal/enerfi/app/src/main/res/drawable/ic_lock.xml" value="0.2234375" />
         <entry key="..\:/Users/nicol/Documents/ProyectoFinal/enerfi/app/src/main/res/drawable/ic_refresh.xml" value="0.221875" />
         <entry key="..\:/Users/nicol/Documents/ProyectoFinal/enerfi/app/src/main/res/drawable/ic_wifi_1.xml" value="0.221875" />
+        <entry key="..\:/Users/nicol/Documents/ProyectoFinal/enerfi/app/src/main/res/drawable/ic_wifi_3.xml" value="0.2234375" />
+        <entry key="..\:/Users/nicol/Documents/ProyectoFinal/enerfi/app/src/main/res/drawable/ic_wifi_full.xml" value="0.2234375" />
+        <entry key="..\:/Users/nicol/Documents/ProyectoFinal/enerfi/app/src/main/res/drawable/side_nav_bar.xml" value="0.2234375" />
         <entry key="..\:/Users/nicol/Documents/ProyectoFinal/enerfi/app/src/main/res/layout/].xml" value="0.1" />
         <entry key="..\:/Users/nicol/Documents/ProyectoFinal/enerfi/app/src/main/res/layout/activity_add_device.xml" value="0.2617753623188406" />
         <entry key="..\:/Users/nicol/Documents/ProyectoFinal/enerfi/app/src/main/res/layout/activity_main.xml" value="0.13360507246376813" />
@@ -23,9 +33,11 @@
         <entry key="..\:/Users/nicol/Documents/ProyectoFinal/enerfi/app/src/main/res/layout/content_wifi_scan_list.xml" value="0.20572916666666666" />
         <entry key="..\:/Users/nicol/Documents/ProyectoFinal/enerfi/app/src/main/res/layout/dialog_wifi_network.xml" value="0.20572916666666666" />
         <entry key="..\:/Users/nicol/Documents/ProyectoFinal/enerfi/app/src/main/res/layout/fragment_login.xml" value="0.23697916666666666" />
+        <entry key="..\:/Users/nicol/Documents/ProyectoFinal/enerfi/app/src/main/res/layout/fragment_splash.xml" value="0.20729166666666668" />
         <entry key="..\:/Users/nicol/Documents/ProyectoFinal/enerfi/app/src/main/res/layout/ic_lock.xml" value="0.20572916666666666" />
         <entry key="..\:/Users/nicol/Documents/ProyectoFinal/enerfi/app/src/main/res/layout/item_book.xml" value="0.20572916666666666" />
         <entry key="..\:/Users/nicol/Documents/ProyectoFinal/enerfi/app/src/main/res/layout/item_order.xml" value="0.20572916666666666" />
+        <entry key="..\:/Users/nicol/Documents/ProyectoFinal/enerfi/app/src/main/res/layout/item_orderbook.xml" value="0.75" />
         <entry key="..\:/Users/nicol/Documents/ProyectoFinal/enerfi/app/src/main/res/layout/item_wifi_access_point.xml" value="0.20572916666666666" />
         <entry key="..\:/Users/nicol/Documents/ProyectoFinal/enerfi/app/src/main/res/layout/nav_header_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/nicol/Documents/ProyectoFinal/enerfi/app/src/main/res/layout/register_order_fragment.xml" value="0.25" />
